@@ -1,6 +1,6 @@
 //section 18.2.4 of module for guidance
 
-const { Schema, model, Types } = require('mongoose');
+const { Schema, models, Types } = require('mongoose');
 
 const reactionSchema = new Schema({
     reactionId: {
@@ -12,7 +12,7 @@ const reactionSchema = new Schema({
     reactionBody: {
         type: String,
         required: true,
-        maxLength: 280
+        maxLength: 200
     },
     username: {
         type: String,
@@ -25,21 +25,23 @@ const reactionSchema = new Schema({
             if (date) return date.toISOString().split("T")[0]; //double check if correct
         },
     },
-})
+});
 
 const thoughtSchema = new Schema({
     thoughtText: {
         type: String,
         required: true,
-        maxLength: 280
+        maxLength: 200
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
+  
     username: {
         type: String,
         required: true
+    },
+
+    createdAt: {
+        type: Date,
+        default: Date.now,
     },
     reactions: [reactionSchema]
 },
@@ -55,4 +57,4 @@ thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });
 
-module.exports = model('Thought', thoughtSchema);
+module.exports = model('Thoughts', thoughtSchema);

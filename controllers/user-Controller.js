@@ -7,7 +7,7 @@ const getAllUsers = async (req, res) => {
         const allUser = await User.findById(
             req.params.userId
         );
-        res.json(allUser);
+        res.json(getAllUser);
     } catch (err) {
         res.status(400).json({ err });   
     }
@@ -21,7 +21,7 @@ const getOneUser = async (req, res) => {
         );
         res.json(oneUser);
     } catch (err) {
-        res.status(500).json({ err });   
+        res.status(400).json({ err });   
     }
 };
 
@@ -33,7 +33,7 @@ const createUser = async (req, res) => {
         });
         res.json(newUser);
     } catch (err) {
-        res.status(500).json({ err });  
+        res.status(400).json({ err });  
     }
 };
 
@@ -46,7 +46,7 @@ const createUser = async (req, res) => {
 //         )
 //         res.send('User deleted successfully');
 //     } catch (err) {
-//         res.status(500).json({ err });   
+//         res.status(400).json({ err });   
 //     }
 // };
 
@@ -61,7 +61,7 @@ const updateUser = async (req, res) => {
         );
         res.json(updatedUser);
     } catch (err) {
-        res.status(500).json({ err });  
+        res.status(400).json({ err });  
     }   
 };
 
@@ -80,13 +80,13 @@ const updateUser = async (req, res) => {
 //         )
 //         res.send('Added')
 //     } catch (err) {
-//         res.status(500).json({ err}); 
+//         res.status(400).json({ err}); 
 //     }
 // };
 
 // const removeFriend = async (req, res) => {
 //     try {
-//         const removeFriend = await User.findByIdAndUpdate(
+//         const remove = await User.findByIdAndUpdate(
 //             req.params.userId,
 //             {
 //                 $pull: {
@@ -96,7 +96,7 @@ const updateUser = async (req, res) => {
 //         )
 //         res.send('Friend Removed')
 //     } catch (err) {
-//         res.status(500).json({ err }); 
+//         res.status(400).json({ err }); 
 // //     }
 // };
 

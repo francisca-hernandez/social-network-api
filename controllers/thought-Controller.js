@@ -2,7 +2,7 @@ const { Thought, User } = require('../models');
 
 
 
-//get all thoughts //Used module 18 for guidance on the below functions
+//get all thoughts //Used module 18.2.5for guidance on the below functions
 
 const getAllThoughts = async (req, res) => {
     try {
@@ -10,7 +10,7 @@ const getAllThoughts = async (req, res) => {
         req.params.userId //is this right?
         res.json(thoughts);
     } catch (err) {
-        res.status(500).json({ err }); 
+        res.status(400).json({ err }); 
     }
 };
 
@@ -22,7 +22,7 @@ const getOneThought = async (req, res) => {
        );
        res.json(oneThought);
     } catch (err) {
-        res.status(500).json({ err}); 
+        res.status(400).json({ err}); 
     }
 };
 
@@ -30,17 +30,16 @@ const getOneThought = async (req, res) => {
 const createThought = async (req, res) => {
   try {
     const newThought = await Thought.create(req.body);
-    const thoughtArray = await User.findByIdAndUpdate(
       req.params.userId,
       {
         $addToSet: {
-          thoughts: newThought._id
+          thoughts: createThought._id
         }
       }
-    )
+    
     res.send('Thought Added')
   } catch (err) {
-    res.status(500).json({ err });
+    res.status(400).json({ err });
   }
 };
 
@@ -55,7 +54,7 @@ const updateThought = async (req, res) => {
     );
     res.json(updatedThought)
   } catch (err) {
-    res.status(500).json({ err });
+    res.status(400).json({ err });
   }
 };
 
@@ -67,7 +66,7 @@ const deleteThought = async (req, res) => {
     );
     res.send('Thought Deleted')
   } catch (err) {
-    res.status(500).json({ err });
+    res.status(400).json({ err });
   }
 };
 
@@ -84,7 +83,7 @@ const deleteThought = async (req, res) => {
 //     )
 //     res.json(newReactions);
 //   } catch (err) {
-//     res.status(500).json({ err });
+//     res.status(400).json({ err });
 //   }
 // };
 
@@ -101,7 +100,7 @@ const deleteReaction = async (req, res) => {
     )
     res.send('Reaction Deleted!')
   } catch (err) {
-    res.status(500).json({ err });
+    res.status(400).json({ err });
   }
 };
 
