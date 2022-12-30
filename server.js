@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 
 
 const app = express();
-
 const PORT = process.env.PORT || 3001;
 
 
@@ -15,7 +14,7 @@ app.use(require('./routes'));
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/socialnetworkapi', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  // useUnifiedTopology: true   <=from Module check to see if needed
 });
 
 // log mongo queries being executed

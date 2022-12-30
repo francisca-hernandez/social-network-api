@@ -2,7 +2,7 @@ const { Thought, User } = require('../models');
 
 
 
-//get all thoughts
+//get all thoughts //Used module 18 for guidance on the below functions
 
 const getAllThoughts = async (req, res) => {
     try {
@@ -93,7 +93,7 @@ const deleteReaction = async (req, res) => {
     const deletedReaction = await Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       {
-        $pull: {
+        pull: {
           reactions: { reactionId: req.params.reactionId }
         }
       },

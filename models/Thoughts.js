@@ -1,3 +1,5 @@
+//section 18.2.4 of module for guidance
+
 const { Schema, model, Types } = require('mongoose');
 
 const reactionSchema = new Schema({
@@ -20,8 +22,8 @@ const reactionSchema = new Schema({
         type: Date,
         default: Date.now,
         get: (date) => {
-            if (date) return date.toISOString().split("T") [0];
-          },
+            if (date) return date.toISOString().split("T")[0]; //double check if correct
+        },
     },
 })
 
@@ -41,16 +43,15 @@ const thoughtSchema = new Schema({
     },
     reactions: [reactionSchema]
 },
-{
-   toJSON: {
-    virtuals: true,
-    getters: true
-   },
-   id: false
-}
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false
+    }
 );
 
-thoughtSchema.virtual('reactionCount').get(function() {
+thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });
 

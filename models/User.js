@@ -1,3 +1,5 @@
+//18.1.5 for guidance
+
 const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
