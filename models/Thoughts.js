@@ -1,6 +1,6 @@
 //section 18.2.4 of module for guidance
 
-const { Schema, models, Types } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 const reactionSchema = new Schema({
     reactionId: {
@@ -57,4 +57,4 @@ thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });
 
-module.exports = model('Thoughts', thoughtSchema);
+module.exports = model('Thought', thoughtSchema);
