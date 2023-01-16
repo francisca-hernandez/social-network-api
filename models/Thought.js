@@ -2,6 +2,7 @@
 
 const { Schema, model, Types } = require('mongoose');
 
+//reaction
 const reactionSchema = new Schema({
     reactionId: {
         type: Schema.Types.ObjectId,
@@ -27,6 +28,7 @@ const reactionSchema = new Schema({
     },
 });
 
+//thought
 const thoughtSchema = new Schema({
     thoughtText: {
         type: String,
@@ -48,6 +50,7 @@ const thoughtSchema = new Schema({
     {
         toJSON: {
             virtuals: true,
+            //getters?
         },
         id: false
     }
