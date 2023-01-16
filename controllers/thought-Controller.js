@@ -45,8 +45,6 @@ const newThought = async (req, res) => {
 }
 
 
-
-
 //delete thought //see section 18.1.6 for help
 const deleteThought = async (req, res) => {
   try {
@@ -60,7 +58,7 @@ const deleteThought = async (req, res) => {
 }
 
 // update thought
-const updateThought = async (req, res) => {
+const updateThoughts = async (req, res) => {
   try {
       const updateaThought = await Thought.findByIdAndUpdate(
           req.params.thoughtId,
@@ -116,7 +114,7 @@ module.exports = { getAllThoughts,
                   getOneThought, 
                   newThought, 
                   deleteThought, 
-                  updateThought,
+                  updateThoughts,
                   addReaction,
                   // deleteReaction,
               }

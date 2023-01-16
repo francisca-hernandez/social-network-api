@@ -10,20 +10,24 @@ const reactionSchema = new Schema({
             return new Types.ObjectId();
         }
     },
+
+    username: {
+        type: String,
+        required: true
+    },
+
+
     reactionBody: {
         type: String,
         required: true,
         maxLength: 200
     },
-    username: {
-        type: String,
-        required: true
-    },
+   
     createdAt: {
         type: Date,
         default: Date.now,
         get: (date) => {
-            if (date) return date.toISOString().split("T")[0]; //double check if correct
+            if (date) return date.toISOString().split("T")[0]; //return a date object as a string
         },
     },
 });
@@ -50,7 +54,6 @@ const thoughtSchema = new Schema({
     {
         toJSON: {
             virtuals: true,
-            //getters?
         },
         id: false
     }

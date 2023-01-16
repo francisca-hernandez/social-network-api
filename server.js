@@ -13,6 +13,8 @@ const PORT = process.env.PORT || 3001;
 // })
 // .catch(err => console.log(err));
 
+
+//connection (was not conecting with previous code above)
 mongoose.connect(
     process.env.MONGODB_URI || "mongodb://127.0.0.1/SocialNetworkAPI",
     {

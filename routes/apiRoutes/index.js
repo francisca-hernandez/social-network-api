@@ -5,6 +5,7 @@ const router = express.Router();
 const userRoutes = require('./userRoutes');
 const thoughtRoutes = require('./thoughtRoutes');
 
+// middleware function
 router.use('/users', userRoutes);
 router.use('/thoughts', thoughtRoutes);
 
